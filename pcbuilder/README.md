@@ -19,7 +19,7 @@
 ## USED TECHNOLOGIES:
 *Python 
 *Django 
-*HTML 
+*HTML
 *CSS 
 *Bootstrap 
 *Heroku 
