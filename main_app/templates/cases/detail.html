@@ -10,7 +10,10 @@
         <p > Price: {{ case.price }}</p>
         <p > Color: {{ case.color }}</p>
     </div>
-
+    <div class="card-action">
+        <a href="{% url 'cases_update' case.id %}">Edit</a>
+        <a href="{% url 'cases_delete' case.id %}">Delete</a>
+    </div>
 </div>
 
 {% endblock %}
