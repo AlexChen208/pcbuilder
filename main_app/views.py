@@ -1,25 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-
+from .models import Case
 # Add the following import
 from django.http import HttpResponse
 
 
-class Case:
-    def __init__(self, name, color, type, material, price):
-        self.name = name
-        self.color = color
-        self.type = type
-        self.material = material
-        self.price = price
-
-cases = [
-    Case('Asus', 'Black', 'Mid-Tower', 'Plastic', '$100'),
-    Case('Samsung', 'White', 'Tower', 'Steel', '$200'),
-    Case('Dell', 'Grey', 'Box', 'Tempered-Glass', '$250'),
-   
-]        
 
 # Define the home view
 def home(request):
@@ -29,8 +15,12 @@ def about(request):
   return render(request, 'about.html')
 
 def cases_index(request):
+  cases = Case.objects.all()
   return render(request, 'cases/index.html',{'cases': cases})
 
+def cases_detail(request,case_id):
+  case= Case.objects.get(id=case_id)
+  return render(request,'cases/detail.html',{'case':case})
 
 def signup(request):
   error_message = ''
