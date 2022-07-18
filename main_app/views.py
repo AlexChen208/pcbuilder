@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Case
 # Add the following import
 from django.http import HttpResponse
@@ -21,6 +22,23 @@ def cases_index(request):
 def cases_detail(request,case_id):
   case= Case.objects.get(id=case_id)
   return render(request,'cases/detail.html',{'case':case})
+
+class CaseCreate(CreateView):
+  model = Case
+  fields = ['name', 'type', 'material', 'color', 'price']
+  success_url = '/cases/'
+
+  def form_valid(self, form):
+    form.instance.user = self.request.user  
+    return super().form_valid(form)
+
+class CaseUpdate(UpdateView):
+  model = Case
+  fields = ['name', 'type', 'material', 'color', 'price']
+
+class CaseDelete(DeleteView):
+  model = Case
+  success_url = '/cases/'
 
 def signup(request):
   error_message = ''
