@@ -3,6 +3,16 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 # Create your models here.
 
+class Component(models.Model):
+    brand = models.CharField(max_length=255)
+    part = models.CharField(max_length=255)
+    price = models.IntegerField()
+
+    def __str__(self):
+        return self.brand, self.part
+
+    def get_absolute_url(self):
+        return reverse('components_detail', kwargs={'pk': self.id})
 
 class Case(models.Model):
     name = models.CharField(max_length=255)
@@ -11,7 +21,8 @@ class Case(models.Model):
     material = models.CharField(max_length=255)
     price = models.CharField(max_length=255)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-
+    components = models.ManyToManyField(Component)
+    
     def __str__(self):
         return self.name
 
