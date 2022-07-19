@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>PC Cases</h1>
+
+{% for case in cases %}
+<div class="card">
+    <a href="{%url 'detail' case.id%}">
+    <div class="card-content">
+        <h3> Brand: {{ case.name }}</h3>
+        <p > Tower Type: {{ case.type }}</p>
+        <p > Case Material: {{ case.material }}</p>
+        <p > Price: {{ case.price }}</p>
+        <p > Color: {{ case.color }}</p>
+    </div>
+</a>
+</div>
+    {% endfor %}
+{% endblock %}
