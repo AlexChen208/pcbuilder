@@ -3,10 +3,13 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
-from .models import Case, Component
+from .models import Case, Component, Photo
 from .forms import CommentForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+import uuid
+import boto3
+import os
 
 # Add the following import
 from django.http import HttpResponse
@@ -110,3 +113,19 @@ def unassoc_component(request, case_id, component_id):
     case = Case.objects.get(id=case_id)
     case.components.remove(component_id)
     return redirect('detail', case_id=case_id)
+
+@login_required
+def add_photo(request, case_id):
+  photo_file = request.FILES.get('photo-file', None)
+  if photo_file:
+        s3 = boto3.client('s3')
+        key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+        try:
+            bucket = os.environ['S3_BUCKET']
+            s3.upload_fileobj(photo_file, bucket, key)
+            url = f"{os.environ['S3_BASE_URL']}{bucket}/{key}"
+            Photo.objects.create(url=url, case_id=case_id)
+        except Exception as e:
+            print('An error occurred uploading file to S3')
+            print(e)
+  return redirect('detail', case_id=case_id)
