@@ -35,7 +35,7 @@ class Case(models.Model):
 
 class Comment(models.Model):
     name = models.CharField(max_length=60)
-    comment = models.TextField(max_length=500)
+    comment = models.TextField(max_length=250)
     created_on = models.DateTimeField(auto_now_add=True)
 
     case = models.ForeignKey(Case,on_delete=models.CASCADE)
@@ -44,4 +44,4 @@ class Comment(models.Model):
         ordering = ['created_on']
 
     def __str__(self):
-        return 'Comment {} by {}'.format(self.body, self.name)
+        return 'Comment {} by {}'.format(self.comment, self.name)
