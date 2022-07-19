@@ -10,11 +10,14 @@
         <p > Price: {{ case.price }}</p>
         <p > Color: {{ case.color }}</p>
     </div>
+    {% if user.is_authenticated %} 
     <div class="card-action">
         <a href="{% url 'cases_update' case.id %}">Edit</a>
         <a href="{% url 'cases_delete' case.id %}">Delete</a>
     </div>
+     {%endif%}
     <hr><br>
+    {% if user.is_authenticated %} 
     {% for photo in case.photo_set.all %}
     <img class="responsive-img card-panel" src="{{photo.url}}">
     {% empty %}
@@ -26,6 +29,7 @@
       <br><br>
       <input type="submit" class="btn" value="Upload Photo">
     </form>
+    {% endif %}
     <div class="row">
       <div class="col s6">
         <h3>{{ case.name }}'s Components</h3>
@@ -66,7 +70,9 @@
         <div class="card-action">
           <form action="{% url 'assoc_component' case.id component.id %}" method="POST">
             {% csrf_token %}
+            {% if user.is_authenticated %}    
             <button type="submit" class="btn">Add</button>
+            {% endif %}
           </form>
         </div>
       </div>
@@ -80,7 +86,9 @@
     <form action="{% url 'add_comment' case.id %}" method="POST">
         {% csrf_token %}
         {{ comment_form.as_p }}
+    
         <input type="submit" class="btn" value="Add Comment">
+
       </form>
     <table class="striped">
       <thead>

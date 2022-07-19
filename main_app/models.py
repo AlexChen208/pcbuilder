@@ -49,6 +49,7 @@ class Comment(models.Model):
 class Photo(models.Model):
     url = models.CharField(max_length=200)
     case = models.ForeignKey(Case, on_delete=models.CASCADE)
+    
 
     def __str__(self):
         return f"Photo for case_id: {self.case_id} @{self.url}"
