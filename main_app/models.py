@@ -23,7 +23,7 @@ class Case(models.Model):
 
 
 class Comment(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=60)
     comment = models.TextField(max_length=250)
     created_on = models.DateTimeField(auto_now_add=True)
 

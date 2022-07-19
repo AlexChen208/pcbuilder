@@ -28,6 +28,7 @@
 
 ## CHECK OUT THIS LINK: https://team-creator-sei523.herokuapp.com/
 
+delete this line
 
 ## ICEBOX: Game Results Page, Sort by groups and Sport Data API
 
