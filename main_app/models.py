@@ -19,7 +19,7 @@ class Case(models.Model):
     color = models.CharField(max_length=255)
     type = models.CharField(max_length=255)
     material = models.CharField(max_length=255)
-    price = models.CharField(max_length=255)
+    price = models.IntegerField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     components = models.ManyToManyField(Component)
     

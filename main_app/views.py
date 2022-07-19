@@ -13,7 +13,7 @@ import os
 
 # Add the following import
 from django.http import HttpResponse
-
+import os
 
 
 # Define the home view
@@ -55,7 +55,8 @@ def add_comment(request,case_id):
     new_comment.save()
   return redirect('detail', case_id=case_id)
 
- 
+def some_function(request):
+  secret_key = os.environ['SECRET_KEY']
 
 
 class CaseUpdate(LoginRequiredMixin,UpdateView):
