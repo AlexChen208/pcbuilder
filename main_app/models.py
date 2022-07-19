@@ -23,8 +23,8 @@ class Case(models.Model):
 
 
 class Comment(models.Model):
-    name = models.ForeignKey(User, on_delete=models.CASCADE)
-    comment = models.TextField()
+    name = models.CharField(max_length=60)
+    comment = models.TextField(max_length=500)
     created_on = models.DateTimeField(auto_now_add=True)
 
     case = models.ForeignKey(Case,on_delete=models.CASCADE)
