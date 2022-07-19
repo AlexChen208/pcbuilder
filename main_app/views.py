@@ -28,7 +28,6 @@ def cases_detail(request,case_id):
 class CaseCreate(CreateView):
   model = Case
   fields = ['name', 'type', 'material', 'color', 'price']
-  success_url = '/cases/'
 
   def form_valid(self, form):
     form.instance.user = self.request.user  
