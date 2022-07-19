@@ -23,6 +23,8 @@
                     <li><a href="{% url 'about' %}">About</a></li>
                     {% if user.is_authenticated %}
                     <li><a href="{% url 'cases_create' %}">Add a Case</a></li>
+                    <li><a href="{% url 'components_create' %}">Add a Component</a></li>
+                    <li><a href="{% url 'components_index' %}">View All Components</a></li>
                     <li> <a href="{%url 'index'%}"> View All My Cases</a></li>
                     <li><a href="{% url 'logout' %}">Log Out</a></li>
                     {% else %}
