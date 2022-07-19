@@ -15,5 +15,27 @@
         <a href="{% url 'cases_delete' case.id %}">Delete</a>
     </div>
 </div>
+<div class="col s6">
+    <form action="{% url 'add_comment' case.id %}" method="POST">
+        {% csrf_token %}
+        {{ comment_form.as_p }}
+        <input type="submit" class="btn" value="Add Comment">
+      </form>
+    <table class="striped">
+      <thead>
+        <tr><th>Date</th><th>Name</th><th>Comments</th></tr>
+      </thead>
+      <tbody>
+        {% for comment in case.comment_set.all %}
+          <tr>
+            <td>{{comment.created_on}}</td>
+            <td>{{comment.name}}</td>
+            <td>{{comment.comment}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
 
 {% endblock %}
