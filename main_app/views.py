@@ -3,6 +3,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Case
+from .forms import CommentForm
 # Add the following import
 from django.http import HttpResponse
 
@@ -21,7 +22,8 @@ def cases_index(request):
 
 def cases_detail(request,case_id):
   case= Case.objects.get(id=case_id)
-  return render(request,'cases/detail.html',{'case':case})
+  comment_form = CommentForm()
+  return render(request,'cases/detail.html',{'case':case,'comment_form':comment_form})
 
 class CaseCreate(CreateView):
   model = Case
@@ -31,6 +33,17 @@ class CaseCreate(CreateView):
   def form_valid(self, form):
     form.instance.user = self.request.user  
     return super().form_valid(form)
+
+def add_comment(request,case_id):
+  form = CommentForm(request.POST)
+  if form.is_valid():
+    new_comment = form.save(commit=False)
+    new_comment.case_id = case_id
+    new_comment.save()
+  return redirect('detail', case_id=case_id)
+
+ 
+
 
 class CaseUpdate(UpdateView):
   model = Case

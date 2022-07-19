@@ -17,3 +17,20 @@ class Case(models.Model):
 
     def get_absolute_url(self):
         return reverse('detail', kwargs={'case_id': self.id})
+
+
+
+
+
+class Comment(models.Model):
+    name = models.ForeignKey(User, on_delete=models.CASCADE)
+    comment = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    case = models.ForeignKey(Case,on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ['created_on']
+
+    def __str__(self):
+        return 'Comment {} by {}'.format(self.body, self.name)
