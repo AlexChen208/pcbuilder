@@ -29,11 +29,13 @@ def cases_index(request):
 
 
 def cases_detail(request,case_id):
+  current_user = request.user
+  print (current_user)
   case= Case.objects.get(id=case_id)
   id_list = case.components.all().values_list('id')
   components_case_doesnt_have = Component.objects.exclude(id__in=id_list)
   comment_form = CommentForm()
-  return render(request,'cases/detail.html',{'case':case,'comment_form':comment_form, 'components': components_case_doesnt_have})
+  return render(request,'cases/detail.html',{'case':case,'comment_form':comment_form, 'components': components_case_doesnt_have,'username':current_user})
 
 class CaseCreate(LoginRequiredMixin,CreateView):
   model = Case
