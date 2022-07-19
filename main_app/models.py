@@ -34,7 +34,7 @@ class Case(models.Model):
 
 
 class Comment(models.Model):
-    name = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=60)
     comment = models.TextField(max_length=250)
     created_on = models.DateTimeField(auto_now_add=True)
 
@@ -45,3 +45,5 @@ class Comment(models.Model):
 
     def __str__(self):
         return 'Comment {} by {}'.format(self.comment, self.name)
+
+        

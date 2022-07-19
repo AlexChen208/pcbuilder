@@ -10,7 +10,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Add the following import
 from django.http import HttpResponse
-
+import os
 
 
 # Define the home view
@@ -29,13 +29,11 @@ def cases_index(request):
 
 
 def cases_detail(request,case_id):
-  current_user = request.user
-  print (current_user)
   case= Case.objects.get(id=case_id)
   id_list = case.components.all().values_list('id')
   components_case_doesnt_have = Component.objects.exclude(id__in=id_list)
   comment_form = CommentForm()
-  return render(request,'cases/detail.html',{'case':case,'comment_form':comment_form, 'components': components_case_doesnt_have,'username':current_user})
+  return render(request,'cases/detail.html',{'case':case,'comment_form':comment_form, 'components': components_case_doesnt_have})
 
 class CaseCreate(LoginRequiredMixin,CreateView):
   model = Case
@@ -54,7 +52,8 @@ def add_comment(request,case_id):
     new_comment.save()
   return redirect('detail', case_id=case_id)
 
- 
+def some_function(request):
+  secret_key = os.environ['SECRET_KEY']
 
 
 class CaseUpdate(LoginRequiredMixin,UpdateView):
