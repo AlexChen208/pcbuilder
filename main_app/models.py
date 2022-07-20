@@ -53,3 +53,6 @@ class Photo(models.Model):
 
     def __str__(self):
         return f"Photo for case_id: {self.case_id} @{self.url}"
+
+
+
