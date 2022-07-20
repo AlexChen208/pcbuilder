@@ -15,7 +15,7 @@ class Component(models.Model):
         return reverse('components_detail', kwargs={'pk': self.id})
 
 class Case(models.Model):
-    name = models.CharField(max_length=255)
+    brand = models.CharField(max_length=255)
     color = models.CharField(max_length=255)
     type = models.CharField(max_length=255)
     material = models.CharField(max_length=255)
@@ -24,7 +24,7 @@ class Case(models.Model):
     components = models.ManyToManyField(Component)
     
     def __str__(self):
-        return self.name
+        return self.brand
 
     def get_absolute_url(self):
         return reverse('detail', kwargs={'case_id': self.id})
