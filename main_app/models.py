@@ -34,7 +34,7 @@ class Case(models.Model):
 
 
 class Comment(models.Model):
-    name = models.CharField(max_length=60)
+    name = models.ForeignKey(User, on_delete=models.CASCADE)
     comment = models.TextField(max_length=250)
     created_on = models.DateTimeField(auto_now_add=True)
 
@@ -53,3 +53,12 @@ class Photo(models.Model):
 
     def __str__(self):
         return f"Photo for case_id: {self.case_id} @{self.url}"
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE) # User is the name of the model 
+    age = models.IntegerField(default=0)
+    picture = models.ImageField(upload_to='uploads/', blank=True)
+    username = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.username

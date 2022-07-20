@@ -135,3 +135,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 environ.Env()
 environ.Env.read_env()
+
+MEDIA_ROOT = ''
