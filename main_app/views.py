@@ -35,11 +35,8 @@ def cases_detail(request,case_id):
   case= Case.objects.get(id=case_id)
   id_list = case.components.all().values_list('id')
   components_case_doesnt_have = Component.objects.exclude(id__in=id_list)
-  comment_form = CommentForm(request)
-  if comment_form.is_valid():
-    comment = comment_form.save(commit=False)
-    comment.name_id = request.user
-    comment.save()
+  comment_form = CommentForm(request.POST)
+
   return render(request,'cases/detail.html',{'case':case,'comment_form':comment_form, 'components': components_case_doesnt_have})
 
 class CaseCreate(LoginRequiredMixin,CreateView):
