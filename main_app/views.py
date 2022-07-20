@@ -53,6 +53,7 @@ def add_comment(request,case_id):
   if form.is_valid():
     new_comment = form.save(commit=False)
     new_comment.case_id = case_id
+    new_comment.name = request.user
     new_comment.save()
   return redirect('detail', case_id=case_id)
 
@@ -98,7 +99,7 @@ class ComponentCreate(LoginRequiredMixin,CreateView):
 
 class ComponentUpdate(LoginRequiredMixin,UpdateView):
   model = Component
-  fields = ['brand', 'hardware', 'price','picture']
+  fields = '__all__'
 
 class ComponentDelete(LoginRequiredMixin,DeleteView):
   model = Component
