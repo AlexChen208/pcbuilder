@@ -1,18 +1,21 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
+
 # Create your models here.
 
 class Component(models.Model):
     brand = models.CharField(max_length=255)
-    part = models.CharField(max_length=255)
+    picture = models.ImageField(upload_to="uploads/", blank=True)
+    hardware = models.CharField(max_length=255)
     price = models.IntegerField()
 
     def __str__(self):
-        return self.brand, self.part
+        return self.brand, self.hardware
 
     def get_absolute_url(self):
-        return reverse('components_detail', kwargs={'pk': self.id})
+        return reverse("components_detail", kwargs={"pk": self.id})
+
 
 class Case(models.Model):
     name = models.CharField(max_length=255)
@@ -22,15 +25,12 @@ class Case(models.Model):
     price = models.IntegerField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     components = models.ManyToManyField(Component)
-    
+
     def __str__(self):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('detail', kwargs={'case_id': self.id})
-
-
-
+        return reverse("detail", kwargs={"case_id": self.id})
 
 
 class Comment(models.Model):
@@ -38,26 +38,29 @@ class Comment(models.Model):
     comment = models.TextField(max_length=250)
     created_on = models.DateTimeField(auto_now_add=True)
 
-    case = models.ForeignKey(Case,on_delete=models.CASCADE)
+    case = models.ForeignKey(Case, on_delete=models.CASCADE)
 
     class Meta:
-        ordering = ['created_on']
+        ordering = ["created_on"]
 
     def __str__(self):
-        return 'Comment {} by {}'.format(self.comment, self.name)
+        return "Comment {} by {}".format(self.comment, self.name)
+
 
 class Photo(models.Model):
     url = models.CharField(max_length=200)
     case = models.ForeignKey(Case, on_delete=models.CASCADE)
-    
 
     def __str__(self):
         return f"Photo for case_id: {self.case_id} @{self.url}"
 
+
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE) # User is the name of the model 
+    user = models.OneToOneField(
+        User, on_delete=models.CASCADE
+    )  # User is the name of the model
     age = models.IntegerField(default=0)
-    picture = models.ImageField(upload_to='uploads/', blank=True)
+    picture = models.ImageField(upload_to="uploads/", blank=True)
     username = models.CharField(max_length=255)
 
     def __str__(self):
