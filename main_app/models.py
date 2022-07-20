@@ -53,3 +53,12 @@ class Photo(models.Model):
 
     def __str__(self):
         return f"Photo for case_id: {self.case_id} @{self.url}"
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    age = models.IntegerField(default=0)
+    picture = models.ImageField(upload_to='profile_pics', blank=True)
+    username = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.username
