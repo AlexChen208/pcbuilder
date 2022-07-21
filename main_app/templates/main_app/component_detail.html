@@ -12,8 +12,8 @@
         <p>Price: {{ component.price }}</p>
       </div>
       <div class="card-action">
-        <a href="{% url 'components_update' component.id %}">Edit</a>
-        <a href="{% url 'components_delete' component.id %}">Delete</a>
+        <a class="btn btn-info " href="{% url 'components_update' component.id %}">Edit</a>
+        <a class="btn btn-danger " href="{% url 'components_delete' component.id %}">Delete</a>
       </div>
     </div>
   </div>
