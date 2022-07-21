@@ -1,43 +1,87 @@
 body {
-  background-image: url("https://imgur.com/m9vV61h");
+    background-image: url("https://imgur.com/m9vV61h");
+    background-color: white;
+    font-family: 'Roboto', sans-serif, 'Open Sans', sans-serif;
 }
 
 .card {
-  margin: 0.3rem;
-  display: inline-block;
-  width: 16rem;
-  background-color: #e3b448;
-  text-align: center;
+    margin: 0.3rem;
+    display: inline-block;
+    width: 16rem;
+    background-color: #e3b448;
+    text-align: center;
 }
 
 .details-card {
-  margin: 0.3rem;
-  display: inline-block;
-  width: 70rem;
-  background-color: #e3b448;
-  text-align: center;
+    margin: 0.3rem;
+    display: inline-block;
+    width: 70rem;
+    background-color: hsla(0, 11%, 91%, 0.2);
+    text-align: center;
 }
 
 .column {
-  display: inline-block;
-  align-items: center;
+    display: inline-block;
+    align-items: center;
 }
 
 .form {
-  background-color: grey;
+    background-color: grey;
 }
 
 footer {
-  background-color: #b3ab97;
-  padding: 0.1rem;
-  text-align: center;
+    background-color: #b3ab97;
+    padding: 0.1rem;
+    text-align: center;
 }
 
 .card-panel {
-  height:30rem;
-  width:30rem;
+    height: 15rem;
+    width: 15rem;
+    margin: auto;
 }
 
 .photo_form {
-  margin:auto;
+    margin: auto;
+}
+
+.create-case {
+    margin-top: 2rem;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 30rem;
+    align-items: center;
+}
+
+.comment-table {
+    margin-top: 2rem;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 70rem;
+    align-items: center;
+    background-color: rgb(188, 188, 177);
+}
+
+
+/* case details div in detail page */
+
+.div1 {
+    padding: 2rem;
+    float: left;
+    width: 34rem;
+    background: rgb(150, 174, 150);
+    height: 30rem;
+    border: black solid 1px;
+}
+
+
+/* photo div in detail page */
+
+.div2 {
+    float: right;
+    width: 34rem;
+    background: rgb(192, 205, 209);
+    height: 30rem;
+    border: black solid 1px;
+    padding: 2rem;
 }

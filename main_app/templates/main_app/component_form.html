@@ -3,6 +3,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<br>
+<br>
+<br>
   {% if object %}
     <h1>Edit <span class="teal-text">{{object.brand}}</span></h1>
   {% else %}
@@ -12,9 +15,9 @@
   <form action="" method="post">
     
     {% csrf_token %}
-    <table>
+    <table class="create-case table table-striped table-hover" >
       {{ form.as_table }}
-    </table>
+    </table  >
     <input type="submit" value="Submit!" class="btn btn-success ">
   </form>
 {% endblock %}
