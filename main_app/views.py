@@ -40,7 +40,7 @@ def cases_detail(request,case_id):
 
 class CaseCreate(LoginRequiredMixin,CreateView):
   model = Case
-  fields = ['name', 'type', 'material', 'color', 'price']
+  fields = ['brand', 'type', 'material', 'color', 'price']
 
   def form_valid(self, form):
     form.instance.user = self.request.user  
@@ -62,7 +62,7 @@ def some_function(request):
 
 class CaseUpdate(LoginRequiredMixin,UpdateView):
   model = Case
-  fields = ['name', 'type', 'material', 'color', 'price']
+  fields = ['brand', 'type', 'material', 'color', 'price']
 
 class CaseDelete(LoginRequiredMixin,DeleteView):
   model = Case
