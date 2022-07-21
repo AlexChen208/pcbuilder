@@ -1,15 +1,13 @@
-body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-  }
-  
-  main {
-    flex: 1 0 auto;
-  }
-  
-  footer.page-footer {
-    padding-top: 0;
-    text-align: right;
-  }
-  
+.card {
+    margin: 0.3rem;
+    display: inline-block;
+    width: 16rem;
+    background-color: #E3B448;
+    text-align: center;
+}
+
+footer {
+    background-color: #b3ab97;
+    padding: 0.1rem;
+    text-align: center;
+}

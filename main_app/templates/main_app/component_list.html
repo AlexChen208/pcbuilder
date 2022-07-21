@@ -4,15 +4,16 @@
 <h1>Component List</h1>
 
 {% for component in component_list %}
-  <a href="{% url 'components_detail' component.id %}">
-    <div class="card">
+  
+    <div class="card" >
         <div class="card-content">
             <span class="card-title">{{ component.brand }}</span>
             <p>Part: {{ component.part }}</p>
             <p>Price: {{ component.price }}</p>
+            <a class="btn btn-info " href="{% url 'components_detail' component.id %}">View</a>
         </div>
     </div>
-  </a>
+  
 {% endfor %}
 
 {% endblock %}
