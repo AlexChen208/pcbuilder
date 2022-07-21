@@ -18,6 +18,5 @@ urlpatterns = [
     path('components/<int:pk>/delete/', views.ComponentDelete.as_view(), name='components_delete'),
     path('cases/<int:case_id>/assoc_component/<int:component_id>/', views.assoc_component, name='assoc_component'),
     path('cases/<int:case_id>/unassoc_component/<int:component_id>/', views.unassoc_component, name='unassoc_component'),
-    path('cases/<int:case_id>/add_photo/', views.add_photo, name='add_photo'),
-
+    path('cases/<int:case_id>/add_photo/', views.add_photo, name='add_photo')
 ]

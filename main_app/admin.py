@@ -6,3 +6,4 @@ admin.site.register(Comment)
 admin.site.register(Component)
 admin.site.register(Photo)
 admin.site.register(Profile)
+
