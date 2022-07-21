@@ -1,13 +1,43 @@
+body {
+  background-image: url("https://imgur.com/m9vV61h");
+}
+
 .card {
-    margin: 0.3rem;
-    display: inline-block;
-    width: 16rem;
-    background-color: #E3B448;
-    text-align: center;
+  margin: 0.3rem;
+  display: inline-block;
+  width: 16rem;
+  background-color: #e3b448;
+  text-align: center;
+}
+
+.details-card {
+  margin: 0.3rem;
+  display: inline-block;
+  width: 70rem;
+  background-color: #e3b448;
+  text-align: center;
+}
+
+.column {
+  display: inline-block;
+  align-items: center;
+}
+
+.form {
+  background-color: grey;
 }
 
 footer {
-    background-color: #b3ab97;
-    padding: 0.1rem;
-    text-align: center;
+  background-color: #b3ab97;
+  padding: 0.1rem;
+  text-align: center;
+}
+
+.card-panel {
+  height:30rem;
+  width:30rem;
+}
+
+.photo_form {
+  margin:auto;
 }

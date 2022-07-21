@@ -21,13 +21,15 @@
     <img class="responsive-img card-panel" src="{{photo.url}}"> {% empty %}
     <div class="card-panel teal-text center-align">No Photos Uploaded</div>
     {% endfor %}
-    <form action="{% url 'add_photo' case.id %}" enctype="multipart/form-data" method="POST" alt="Case Photo" class="card-panel">
+    <br><br>
+    <form class="photo_form" action="{% url 'add_photo' case.id %}" enctype="multipart/form-data" method="POST" alt="Case Photo" class="card-panel">
         {% csrf_token %}
         <input type="file" name="photo-file">
         <br><br>
         <input type="submit" class="btn btn-success " value="Upload Photo">
     </form>
     {% endif %}
+    <hr>
     <div class="column">
         <div class="col s6">
             <h3>{{ case.brand }}'s Components</h3>
