@@ -4,30 +4,44 @@
 <hr>
 <div class="details-card">
     <h1>Case Details</h1>
-    <div class="card-content">
-        <span class="card-title">{{ case.brand }}</span>
-        <p> Tower Type: {{ case.type }}</p>
-        <p> Case Material: {{ case.material }}</p>
-        <p> Price: {{ case.price }}</p>
-        <p> Color: {{ case.color }}</p>
+    <div class="parent">
+
+
+        <div class=" div1 card-content">
+            <span class="card-title"> <strong> <h2>Brand Name: {{ case.brand }}</h2></strong></span>
+            <p> Tower Type: {{ case.type }}</p>
+            <p> Case Material: {{ case.material }}</p>
+            <p> Price: {{ case.price }}</p>
+            <p> Color: {{ case.color }}</p>
+
+            {% if user.is_authenticated and user.id != request.id %}
+            <div class="column">
+                <a class="btn btn-info" href="{% url 'cases_update' case.id %}">Edit</a>
+                <a class="btn btn-danger" href="{% url 'cases_delete' case.id %}">Delete</a>
+            </div>
+
+            {%endif%}
+        </div>
+
+
+        <div class="div2 card">
+            <br><br> {% if user.is_authenticated and request.id != user.id %} {% for photo in case.photo_set.all %}
+            <img class="card-panel" src="{{photo.url}}"> {% empty %}
+            <div class="card-panel card-body teal-text center-align">No Photos Uploaded</div>
+            {% endfor %}
+            <br><br>
+            <form class="photo_form" action="{% url 'add_photo' case.id %}" enctype="multipart/form-data" method="POST" alt="Case Photo" class="card-panel">
+                {% csrf_token %}
+                <input type="file" name="photo-file">
+                <br><br>
+                <input type="submit" class="btn btn-success " value="Upload Photo">
+            </form>
+            {% endif %}
+            <br>
+        </div>
+
     </div>
-    {% if user.is_authenticated and user.id != request.id %}
-    <div class="column">
-        <a class="btn btn-info" href="{% url 'cases_update' case.id %}">Edit</a>
-        <a class="btn btn-danger" href="{% url 'cases_delete' case.id %}">Delete</a>
-    </div>
-    {%endif%}
-    <hr><br> {% if user.is_authenticated and request.id != user.id %} {% for photo in case.photo_set.all %}
-    <img class="responsive-img card-panel" src="{{photo.url}}"> {% empty %}
-    <div class="card-panel teal-text center-align">No Photos Uploaded</div>
-    {% endfor %}
-    <form action="{% url 'add_photo' case.id %}" enctype="multipart/form-data" method="POST" alt="Case Photo" class="card-panel">
-        {% csrf_token %}
-        <input type="file" name="photo-file">
-        <br><br>
-        <input type="submit" class="btn btn-success " value="Upload Photo">
-    </form>
-    {% endif %}
+
     <div class="column">
         <div class="col s6">
             <h3>{{ case.brand }}'s Components</h3>
@@ -54,18 +68,19 @@
             {% endif %}
         </div>
     </div>
-    <div class="col s6">
+    <div class="container">
         <h3>Available Components</h3>
         {% if components.count %} {% for component in components.all %}
-        <div class="card">
-            <div class="card-content">
+        <div class="card row">
+            <div class=" col-6 card-content">
                 <span class="card-title">
             {{ component.picture }}
             {{ component.brand }}
-            {{ component.hardware }}
+            {{ component.part }}
+            {{ component.price}}
           </span>
             </div>
-            <div class="card-action">
+            <div class=" col-6 card-action">
                 <form action="{% url 'assoc_component' case.id component.id %}" method="POST">
                     {% csrf_token %} {% if user.is_authenticated and request.id != user.id %}
                     <button type="submit" class="btn btn-success">Add</button> {% endif %}
@@ -88,7 +103,7 @@
             <br>
         </form>
 
-        <table class="table table-striped table-dark">
+        <table class=" comment-table table table-striped table-hover">
 
             <thead>
 
