@@ -99,14 +99,13 @@
 
         <form class="form comment-table" action="{% url 'add_comment' case.id %}" method="POST">
 
-            <br>
             <br> {% csrf_token %} {{ comment_form.as_p }}
 
             <input type="submit" class="btn btn-success " value="Add Comment">
             <br>
             <br>
         </form>
-        <br>
+
         <table class=" comment-table table table-striped table-hover">
 
             <thead>
@@ -129,12 +128,10 @@
         </table>
 
         <br>
-        <br>
+
 
     </div>
 </div>
 <br>
-<br>
-<br>
-<br>
+
 <br> {% endblock %}

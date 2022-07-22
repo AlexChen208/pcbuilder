@@ -33,6 +33,11 @@ footer {
     background-color: #b3ab97;
     padding: 0.1rem;
     text-align: center;
+    opacity: 0.6;
+}
+
+.page-footer {
+    height: 3rem;
 }
 
 .card-panel {
