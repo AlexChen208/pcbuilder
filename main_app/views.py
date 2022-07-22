@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from .models import Case, Component, Photo
-from .forms import CommentForm
+from .forms import CommentForm 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 import uuid
@@ -94,6 +94,7 @@ class ComponentDetail(LoginRequiredMixin,DetailView):
 class ComponentCreate(LoginRequiredMixin,CreateView):
   model = Component
   fields = '__all__'
+
 
 class ComponentUpdate(LoginRequiredMixin,UpdateView):
   model = Component

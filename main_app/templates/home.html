@@ -10,11 +10,15 @@
 <div class="card">
 
     <div class="card-body  ">
-        <h3 class="card-title "> Brand: {{ case.brand }}</h3>
-        <p class="card-text "> Tower Type: {{ case.type }}</p>
-        <p class="card-text "> Case Material: {{ case.material }}</p>
-        <p class="card-text "> Price: {{ case.price }}</p>
-        <p class="card-text "> Color: {{ case.color }}</p>
+        <h3 class="card-title "><button class="btn-d">Brand: {{ case.brand }}</button> </h3>
+        <p class="card-text "> <button class="btn-d">Tower Type: {{ case.type }}</button>
+        </p>
+        <p class="card-text "> <button class="btn-d">Case Material: {{ case.material }}</button>
+        </p>
+        <p class="card-text "> <button class="btn-d">Price: {{ case.price }}</button>
+        </p>
+        <p class="card-text "> <button class="btn-d" style="background-color: {{ case.color }};">Color: {{ case.color }}</button>
+        </p>
         <a class="btn btn-primary " href="{%url 'detail' case.id%} ">DETAILS</a>
     </div>
     <br>

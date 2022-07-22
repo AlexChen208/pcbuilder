@@ -7,7 +7,7 @@ body {
 .card {
     margin: 0.3rem;
     display: inline-block;
-    width: 16rem;
+    width: 23rem;
     background-color: #e3b448;
     text-align: center;
 }
@@ -15,7 +15,7 @@ body {
 .details-card {
     margin: 0.3rem;
     display: inline-block;
-    width: 70rem;
+    width: 85rem;
     background-color: hsla(0, 11%, 91%, 0.2);
     text-align: center;
 }
@@ -26,13 +26,18 @@ body {
 }
 
 .form {
-    background-color: grey;
+    background-color: rgb(219, 180, 90);
 }
 
 footer {
     background-color: #b3ab97;
     padding: 0.1rem;
     text-align: center;
+    opacity: 0.6;
+}
+
+.page-footer {
+    height: 3rem;
 }
 
 .card-panel {
@@ -53,25 +58,16 @@ footer {
     align-items: center;
 }
 
-.comment-table {
-    margin-top: 2rem;
-    border: 1px solid black;
-    border-radius: 5px;
-    width: 70rem;
-    align-items: center;
-    background-color: rgb(188, 188, 177);
-}
-
 
 /* case details div in detail page */
 
 .div1 {
-    padding: 2rem;
     float: left;
-    width: 34rem;
+    width: 48%;
     background: rgb(150, 174, 150);
     height: 30rem;
     border: black solid 1px;
+    padding: 2rem;
 }
 
 
@@ -79,9 +75,68 @@ footer {
 
 .div2 {
     float: right;
-    width: 34rem;
+    width: 48%;
     background: rgb(192, 205, 209);
     height: 30rem;
     border: black solid 1px;
     padding: 2rem;
+}
+
+.comp1 {
+    padding: 2rem;
+    float: left;
+    width: 48%;
+    background: rgb(150, 174, 150);
+    height: 15rem;
+    border: black solid 1px;
+}
+
+
+/* photo div in detail page */
+
+.comp2 {
+    float: right;
+    width: 48%;
+    background: rgb(192, 205, 209);
+    height: 15rem;
+    border: black solid 1px;
+    padding: 2rem;
+}
+
+.comment-section {
+    width: 100%;
+    height: 15rem;
+    border: black solid 1px;
+    float: left;
+}
+
+.comment-table {
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 100%;
+    align-items: center;
+    margin-right: 2rem;
+}
+
+.btn-d {
+    width: 20rem;
+    height: 5rem;
+}
+
+.login {
+    margin: 5rem;
+    border: solid 1px black;
+    width: 25rem;
+    height: 12em;
+    padding: 1rem;
+    background-color: goldenrod;
+}
+
+.signup {
+    margin: 5rem;
+    border: solid 1px black;
+    width: 50rem;
+    height: 30rem;
+    padding: 1rem;
+    background-color: goldenrod;
 }
