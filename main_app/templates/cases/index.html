@@ -1,17 +1,17 @@
 {% extends 'base.html' %} {% block content %}
-
+<br><br><br>
 <h1>PC Cases</h1>
 
 {% for case in cases %}
 <div class="card">
 
-    <div class="card-content">
-        <h3> Brand: {{ case.brand }}</h3>
-        <p> Tower Type: {{ case.type }}</p>
-        <p> Case Material: {{ case.material }}</p>
-        <p> Price: {{ case.price }}</p>
-        <p> Color: {{ case.color }}</p>
-        <a class="btn btn-info" href="{%url 'detail' case.id%}"> <button>DETAILS</button></a>
+    <div class="card">
+        <button class="btn-d"> <h3> Brand: {{ case.brand }}</h3></button>
+        <button class="btn-d"> <p> Tower Type: {{ case.type }}</p></button>
+        <button class="btn-d">  <p> Case Material: {{ case.material }}</p></button>
+        <button class="btn-d">  <p> Price: {{ case.price }}</p></button>
+        <button class="btn-d"> <p> Color: {{ case.color }}</p></button>
+        <a href="{%url 'detail' case.id%}"> <button class="btn btn-primary">DETAILS</button></a>
     </div>
 
 </div>
