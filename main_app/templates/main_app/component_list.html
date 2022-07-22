@@ -7,7 +7,7 @@
 <div class="card">
     <div class="card">
         <button class="btn-d">{{ component.brand }}</button>
-        <button class="btn-d"><p>Part: {{ component.part }}</p></button>
+        <button class="btn-d"><p>Part: {{ component.hardware }}</p></button>
         <button class="btn-d"> <p>Price: {{ component.price }}</p></button>
         <a class="btn btn-info " href="{% url 'components_detail' component.id %}">View</a>
     </div>
