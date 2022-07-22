@@ -6,7 +6,6 @@ from django.contrib.auth.models import User
 
 class Component(models.Model):
     brand = models.CharField(max_length=255)
-    picture = models.ImageField(upload_to="uploads/", blank=True)
     hardware = models.CharField(max_length=255)
     price = models.IntegerField()
 
